@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #E9EEF3;
+    --fg: #0F141A;
+    --fg-secondary: #4B5563;
+    --accent: #2563EB;
+    --accent-hover: #1D4ED8;
+    --accent-text: #FFFFFF;
+    --success: #059669;
+    --success-text: #FFFFFF;
+    --warn: #D97706;
+    --warn-text: #FFFFFF;
+    --danger: #DC2626;
+    --danger-text: #FFFFFF;
+    --surface: #F3F4F6;
+    --border: rgba(15, 20, 26, 0.1);
+    --shadow-hi: rgba(255, 255, 255, 0.9);
+    --shadow-lo: rgba(0, 0, 0, 0.18);
+
+    --radius-xs: 8px;
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+  }
+
+  .dark {
+    --bg: #121519;
+    --fg: #E6EAF0;
+    --fg-secondary: #9CA3AF;
+    --accent: #3B82F6;
+    --accent-hover: #60A5FA;
+    --accent-text: #FFFFFF;
+    --success: #10B981;
+    --success-text: #FFFFFF;
+    --warn: #F59E0B;
+    --warn-text: #000000;
+    --danger: #EF4444;
+    --danger-text: #FFFFFF;
+    --surface: #1F2937;
+    --border: rgba(230, 234, 240, 0.1);
+    --shadow-hi: rgba(255, 255, 255, 0.06);
+    --shadow-lo: rgba(0, 0, 0, 0.6);
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--fg)] font-[Inter,system-ui,-apple-system,sans-serif];
+  }
+}
+
+@layer utilities {
+  .neumo-raised {
+    box-shadow:
+      10px 10px 24px var(--shadow-lo),
+      -10px -10px 24px var(--shadow-hi);
+  }
+
+  [data-intensity="low"] .neumo-raised {
+    box-shadow:
+      6px 6px 16px var(--shadow-lo),
+      -6px -6px 16px var(--shadow-hi);
+  }
+
+  [data-intensity="high"] .neumo-raised {
+    box-shadow:
+      14px 14px 32px var(--shadow-lo),
+      -14px -14px 32px var(--shadow-hi);
+  }
+
+  .neumo-inset {
+    box-shadow:
+      inset 8px 8px 20px var(--shadow-lo),
+      inset -8px -8px 20px var(--shadow-hi);
+  }
+
+  [data-intensity="low"] .neumo-inset {
+    box-shadow:
+      inset 6px 6px 16px var(--shadow-lo),
+      inset -6px -6px 16px var(--shadow-hi);
+  }
+
+  [data-intensity="high"] .neumo-inset {
+    box-shadow:
+      inset 10px 10px 24px var(--shadow-lo),
+      inset -10px -10px 24px var(--shadow-hi);
+  }
+
+  .transition-neumo {
+    transition: box-shadow 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @keyframes refresh-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(720deg);
+    }
+  }
+
+  .animate-refresh {
+    animation: refresh-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

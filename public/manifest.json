@@ -1,0 +1,11 @@
+{
+  "name": "StageFlow",
+  "short_name": "StageFlow",
+  "description": "Remote timer and event management for live productions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E9EEF3",
+  "theme_color": "#3B82F6",
+  "orientation": "any",
+  "icons": []
+}

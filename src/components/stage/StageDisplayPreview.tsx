@@ -211,7 +211,7 @@ export function StageDisplayPreview({ roomId, roomSlug }: StageDisplayPreviewPro
             className="p-1 rounded hover:bg-[var(--bg)] hover:bg-opacity-50 transition-all disabled:opacity-50"
             title="Refresh preview"
           >
-            <RefreshCw className={`w-4 h-4 text-[var(--fg)] opacity-50 ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-4 h-4 text-[var(--fg)] opacity-50 ${refreshing ? 'animate-spin-720' : ''}`} />
           </button>
           <button
             onClick={handleOpenStageDisplay}

@@ -344,10 +344,11 @@ export function ControlRoom() {
             </Card>
 
             <Card>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold flex items-center gap-2">
-                  <Clock className="w-6 h-6" />
-                  {t('timer.quickTimers')}
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="hidden sm:inline">{t('timer.quickTimers')}</span>
+                  <span className="sm:hidden">{t('timer.timers')}</span>
                   <button
                     onClick={async () => {
                       setRefreshingTimer(true);
@@ -362,21 +363,22 @@ export function ControlRoom() {
                   </button>
                 </h3>
               </div>
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-5">
                 {[5, 10, 15, 30, 45].map((min) => (
                   <Button
                     key={min}
                     variant="soft"
-                    size="md"
+                    size="lg"
                     onClick={() => addQuickTimer(min)}
+                    className="!h-14 sm:!h-16"
                   >
-                    <Clock className="w-4 h-4" />
-                    <span className="font-semibold">{min} {t('timer.minutes')}</span>
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="font-bold text-base sm:text-lg">{min} {t('timer.minutes')}</span>
                   </Button>
                 ))}
               </div>
-              <div className="pt-4 border-t border-[var(--fg)] border-opacity-10">
-                <p className="text-sm text-[var(--fg)] opacity-70 mb-3">{t('timer.customTime')}</p>
+              <div className="pt-5 border-t border-[var(--fg)] border-opacity-10">
+                <h4 className="text-base sm:text-lg font-bold text-[var(--fg)] mb-4">{t('timer.customTime')}</h4>
                 <CustomTimeInput onSetTime={addQuickTimer} />
               </div>
             </Card>

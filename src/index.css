@@ -94,7 +94,7 @@
     transition: box-shadow 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  @keyframes refresh-spin {
+  @keyframes spin-720 {
     from {
       transform: rotate(0deg);
     }
@@ -103,7 +103,11 @@
     }
   }
 
+  .animate-spin-720 {
+    animation: spin-720 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .animate-refresh {
-    animation: refresh-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: spin-720 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

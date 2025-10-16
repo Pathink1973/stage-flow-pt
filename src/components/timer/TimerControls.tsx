@@ -29,81 +29,82 @@ export function TimerControls({
   const isRunning = timer?.state === 'running';
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {!connected && (
-        <div className="flex items-center justify-center gap-2 text-sm text-orange-500 bg-orange-50 dark:bg-orange-950 dark:bg-opacity-20 px-3 py-2 rounded-lg">
-          <WifiOff className="w-4 h-4" />
+        <div className="flex items-center justify-center gap-2 text-sm sm:text-base text-orange-500 bg-orange-50 dark:bg-orange-950 dark:bg-opacity-20 px-4 py-3 rounded-lg font-medium">
+          <WifiOff className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>{t('timer.reconnecting')}</span>
         </div>
       )}
       {connected && disabled && (
-        <div className="flex items-center justify-center gap-2 text-sm text-blue-500 bg-blue-50 dark:bg-blue-950 dark:bg-opacity-20 px-3 py-2 rounded-lg">
-          <Wifi className="w-4 h-4 animate-pulse" />
+        <div className="flex items-center justify-center gap-2 text-sm sm:text-base text-blue-500 bg-blue-50 dark:bg-blue-950 dark:bg-opacity-20 px-4 py-3 rounded-lg font-medium">
+          <Wifi className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
           <span>{t('timer.syncing')}</span>
         </div>
       )}
-      <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-      <Button
-        onClick={onStart}
-        variant="primary"
-        size="lg"
-        disabled={disabled || !timer || isRunning}
-        className="!w-20 !h-20 sm:!w-24 sm:!h-24 md:!w-28 md:!h-28 !rounded-full !p-0 relative"
-      >
-        {disabled && !isRunning ? (
-          <Loader2 className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 animate-spin" />
-        ) : (
-          <Play className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
-        )}
-      </Button>
 
-      <Button
-        onClick={onPause}
-        variant="soft"
-        size="lg"
-        disabled={disabled || !timer || !isRunning}
-        className="!w-20 !h-20 sm:!w-24 sm:!h-24 md:!w-28 md:!h-28 !rounded-full !p-0 relative"
-      >
-        {disabled && isRunning ? (
-          <Loader2 className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 animate-spin" />
-        ) : (
-          <Pause className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
-        )}
-      </Button>
+      <div className="flex items-center justify-center gap-3 sm:gap-4">
+        <Button
+          onClick={onStart}
+          variant="primary"
+          size="lg"
+          disabled={disabled || !timer || isRunning}
+          className="!w-24 !h-24 sm:!w-28 sm:!h-28 md:!w-32 md:!h-32 !rounded-full !p-0 shadow-lg"
+        >
+          {disabled && !isRunning ? (
+            <Loader2 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 animate-spin-720" />
+          ) : (
+            <Play className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
+          )}
+        </Button>
 
-      <Button
-        onClick={onReset}
-        variant="soft"
-        size="lg"
-        disabled={disabled || !timer}
-        className="!w-16 !h-16 sm:!w-18 sm:!h-18 md:!w-20 md:!h-20 !rounded-full !p-0"
-      >
-        <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
-      </Button>
+        <Button
+          onClick={onPause}
+          variant="soft"
+          size="lg"
+          disabled={disabled || !timer || !isRunning}
+          className="!w-24 !h-24 sm:!w-28 sm:!h-28 md:!w-32 md:!h-32 !rounded-full !p-0 shadow-lg"
+        >
+          {disabled && isRunning ? (
+            <Loader2 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 animate-spin-720" />
+          ) : (
+            <Pause className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
+          )}
+        </Button>
 
-      <div className="flex gap-2 sm:gap-3 w-full sm:w-auto justify-center">
+        <Button
+          onClick={onReset}
+          variant="soft"
+          size="lg"
+          disabled={disabled || !timer}
+          className="!w-20 !h-20 sm:!w-24 sm:!h-24 md:!w-28 md:!h-28 !rounded-full !p-0 shadow-lg"
+        >
+          <RotateCcw className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+        </Button>
+      </div>
+
+      <div className="flex gap-2 sm:gap-3 w-full justify-center pt-2">
         <Button
           onClick={() => onAdjust(-30)}
           variant="soft"
-          size="md"
+          size="lg"
           disabled={disabled || !timer}
-          className="flex-1 sm:flex-none"
+          className="flex-1 sm:flex-none sm:min-w-[120px] !h-12 sm:!h-14"
         >
-          <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="font-semibold text-sm sm:text-base">30s</span>
+          <Minus className="w-5 h-5 sm:w-6 sm:h-6" />
+          <span className="font-bold text-base sm:text-lg">30s</span>
         </Button>
         <Button
           onClick={() => onAdjust(30)}
           variant="soft"
-          size="md"
+          size="lg"
           disabled={disabled || !timer}
-          className="flex-1 sm:flex-none"
+          className="flex-1 sm:flex-none sm:min-w-[120px] !h-12 sm:!h-14"
         >
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="font-semibold text-sm sm:text-base">30s</span>
+          <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
+          <span className="font-bold text-base sm:text-lg">30s</span>
         </Button>
       </div>
-    </div>
     </div>
   );
 }

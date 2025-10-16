@@ -43,10 +43,10 @@ export function CustomTimeInput({ onSetTime }: CustomTimeInputProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 items-end">
-      <div className="flex-1 grid grid-cols-3 gap-2">
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <div>
-          <label className="text-xs text-[var(--fg)] opacity-60 block mb-1">
+          <label className="text-xs sm:text-sm text-[var(--fg)] opacity-60 block mb-1.5 font-medium">
             {t('timer.hours')}
           </label>
           <Input
@@ -55,11 +55,11 @@ export function CustomTimeInput({ onSetTime }: CustomTimeInputProps) {
             placeholder="0"
             value={hours}
             onChange={(val) => handleNumberInput(val, setHours, 23)}
-            className="text-center"
+            className="text-center text-lg sm:text-xl font-bold h-12 sm:h-14"
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--fg)] opacity-60 block mb-1">
+          <label className="text-xs sm:text-sm text-[var(--fg)] opacity-60 block mb-1.5 font-medium">
             {t('timer.mins')}
           </label>
           <Input
@@ -68,11 +68,11 @@ export function CustomTimeInput({ onSetTime }: CustomTimeInputProps) {
             placeholder="0"
             value={minutes}
             onChange={(val) => handleNumberInput(val, setMinutes, 59)}
-            className="text-center"
+            className="text-center text-lg sm:text-xl font-bold h-12 sm:h-14"
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--fg)] opacity-60 block mb-1">
+          <label className="text-xs sm:text-sm text-[var(--fg)] opacity-60 block mb-1.5 font-medium">
             {t('timer.secs')}
           </label>
           <Input
@@ -81,18 +81,19 @@ export function CustomTimeInput({ onSetTime }: CustomTimeInputProps) {
             placeholder="0"
             value={seconds}
             onChange={(val) => handleNumberInput(val, setSeconds, 59)}
-            className="text-center"
+            className="text-center text-lg sm:text-xl font-bold h-12 sm:h-14"
           />
         </div>
       </div>
       <Button
         type="submit"
         variant="primary"
-        size="md"
+        size="lg"
         disabled={!hours && !minutes && !seconds}
+        className="w-full !h-12 sm:!h-14"
       >
-        <Clock className="w-5 h-5" />
-        <span className="font-semibold">{t('timer.setTimer')}</span>
+        <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+        <span className="font-bold text-base sm:text-lg">{t('timer.setTimer')}</span>
       </Button>
     </form>
   );

@@ -4,7 +4,7 @@ import { MessageSquare, Send, AlertCircle, Info, AlertTriangle, X, Trash2, Refre
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Card } from '../ui/Card';
-import { supabase } from '../../lib/supabase';
+import { supabase, PROJECT_ID } from '../../lib/supabase';
 import { Database } from '../../lib/database.types';
 
 type Message = Database['public']['Tables']['messages']['Row'];
@@ -51,6 +51,7 @@ export function MessageCenter({ roomId }: MessageCenterProps) {
       .from('messages')
       .select('*')
       .eq('room_id', roomId)
+      .eq('project_id', PROJECT_ID)
       .order('created_at', { ascending: false })
       .limit(10);
 
@@ -65,6 +66,7 @@ export function MessageCenter({ roomId }: MessageCenterProps) {
     setLoading(true);
     await supabase.from('messages').insert({
       room_id: roomId,
+      project_id: PROJECT_ID,
       body: newMessage.trim(),
       kind: messageKind,
       level: messageLevel,
@@ -97,7 +99,8 @@ export function MessageCenter({ roomId }: MessageCenterProps) {
       await supabase
         .from('messages')
         .delete()
-        .eq('room_id', roomId);
+        .eq('room_id', roomId)
+        .eq('project_id', PROJECT_ID);
       setLoading(false);
     }
   };
